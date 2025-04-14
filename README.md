@@ -214,4 +214,6 @@ BlogMate is open-source software.
 For questions, support, or feedback, please contact the Yesetoda team at:  
 **Email:** yeneinehseiba@gmail.com
 
-Or visit our [GitHub repository](https://github.com/yesetoda/BlogMate) for more details.
+visit our [GitHub repository](https://github.com/yesetoda/BlogMate) for more details.
+try our Api [BLog Mate](https://blogmate-1amy.onrender.com)
+Swagger Doc [Api Doc](https://blogmate-1amy.onrender.com/doc/index.html)
