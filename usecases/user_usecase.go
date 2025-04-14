@@ -99,7 +99,7 @@ func (useCase *userUsecase) ForgetPassword(email string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	link := config_domain.Domain + "/users/resetPassword/?email=" + user.Email + "&token=" + string(confirmationToken)
+	link := config_domain.Port + "/users/resetPassword/?email=" + user.Email + "&token=" + string(confirmationToken)
 	err = infrastructure.SendEmail(user.Email, "Password Reset", "This is the password reset link: ", link)
 	if err != nil {
 		return "", err
@@ -184,11 +184,11 @@ func (useCase *userUsecase) Create(u *domain.User) (domain.User, error) {
 	u.VerifyToken = string(confirmationToken)
 	nUser, err := useCase.userRepository.Create(u)
 	if !nUser.IsAdmin {
-		// config_domain,err:=config.LoadConfig()
+		config_domain,err:=config.LoadConfig()
 		if err != nil {
 			return nUser, err
 		}
-		link := "`http://localhost:8000/`users/accountVerification/?email=" + u.Email + "&token=" + string(confirmationToken)
+		link := config_domain.Port+"users/accountVerification/?email=" + u.Email + "&token=" + string(confirmationToken)
 		// link := config_domain.Domain + "/users/accountVerification/?email=" + u.Email + "&token=" + string(confirmationToken)
 		err = infrastructure.SendEmail(u.Email, "Registration Confirmation", "This sign up Confirmation email to verify: ", link)
 		if err != nil {

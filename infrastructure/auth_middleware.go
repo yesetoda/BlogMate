@@ -121,7 +121,7 @@ func GetClaims(c *gin.Context) (*domain.Claims, error) {
 	if err != nil {
 		return &domain.Claims{}, err
 	}
-	var jwtSecret = []byte(configJwt.Jwt.JwtKey)
+	var jwtSecret = []byte(configJwt.JWT)
 	authHeader := c.GetHeader("Authorization")
 	if authHeader == "" {
 		return &domain.Claims{}, errors.New("missing authorization header")

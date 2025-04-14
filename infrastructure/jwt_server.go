@@ -17,7 +17,7 @@ func GenerateToken(user *domain.User, pwd string) (string, string, error) {
 	if err != nil {
 		return "", "", err
 	}
-	jwtSecret := []byte(configjwt.Jwt.JwtKey)
+	jwtSecret := []byte(configjwt.JWT)
 
 	if bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(pwd)) != nil {
 		return "", "", errors.New("invalid username or password")

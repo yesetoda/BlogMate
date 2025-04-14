@@ -328,7 +328,7 @@ func (c *UserController) RefreshAccessToken(ctx *gin.Context) {
 		return
 	}
 
-	jwtSecret := []byte(configJwt.Jwt.JwtKey)
+	jwtSecret := []byte(configJwt.JWT)
 	type Pass struct {
 		Password string `json:"password"`
 	}

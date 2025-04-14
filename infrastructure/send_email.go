@@ -31,7 +31,7 @@ func SendEmail(toEmail string, title string, body string, link string) error {
 	`
 
 	mime := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
-	key := cfg.Email.EmailKey
+	key := cfg.Email.Key
 	host := "smtp.gmail.com"
 	auth := smtp.PlainAuth("", "yeneineh.seiba@a2sv.org", key, host)
 
