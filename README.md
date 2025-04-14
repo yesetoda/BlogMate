@@ -1,5 +1,5 @@
 # BlogMate
-
+![Blog-Mate](blogmate2.png)
 BlogMate is a powerful, feature-rich blogging API written in Go. Built on the Gin framework and backed by MongoDB, BlogMate supports everything you need for a modern blog platform—including user management, blog post creation, advanced comment and reply interactions, and AI-powered content recommendations. Our system integrates with Gemini AI to provide tailored suggestions for blog titles, content, and tags, ensuring your content meets your validation rules and adheres to your standards.
 
 BlogMate is maintained by the [Yesetoda](https://github.com/yesetoda) team and is designed for seamless integration into your development pipeline.
