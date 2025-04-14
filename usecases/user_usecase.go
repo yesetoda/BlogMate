@@ -188,7 +188,7 @@ func (useCase *userUsecase) Create(u *domain.User) (domain.User, error) {
 		if err != nil {
 			return nUser, err
 		}
-		link := config_domain.Port+"users/accountVerification/?email=" + u.Email + "&token=" + string(confirmationToken)
+		link := config_domain.Port+"/users/accountVerification/?email=" + u.Email + "&token=" + string(confirmationToken)
 		// link := config_domain.Domain + "/users/accountVerification/?email=" + u.Email + "&token=" + string(confirmationToken)
 		err = infrastructure.SendEmail(u.Email, "Registration Confirmation", "This sign up Confirmation email to verify: ", link)
 		if err != nil {
