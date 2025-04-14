@@ -1,10 +1,32 @@
+
 # BlogMate
-![Blog-Mate](blogmate2.png)
-BlogMate is a powerful, feature-rich blogging API written in Go. Built on the Gin framework and backed by MongoDB, BlogMate supports everything you need for a modern blog platform—including user management, blog post creation, advanced comment and reply interactions, and AI-powered content recommendations. Our system integrates with Gemini AI to provide tailored suggestions for blog titles, content, and tags, ensuring your content meets your validation rules and adheres to your standards.
 
-BlogMate is maintained by the [Yesetoda](https://github.com/yesetoda) team and is designed for seamless integration into your development pipeline.
+<!-- Project Badges -->
+<p align="center">
+  <a href="https://blogmate-1amy.onrender.com/docs/index.html" target="_blank">
+    <img src="https://img.shields.io/badge/API-Swagger-blue" alt="Swagger API">
+  </a>
+  <img src="https://img.shields.io/badge/Go-1.24%2B-blue" alt="Go Version">
+  <img src="https://img.shields.io/badge/Database-MongoDB-4DB33D" alt="MongoDB">
+  <img src="https://img.shields.io/badge/Hosted%20on-Render-008000" alt="Render Hosting">
+  <a href="https://github.com/yesetoda/BlogMate/issues" target="_blank">
+    <img src="https://img.shields.io/github/issues/yesetoda/BlogMate" alt="GitHub Issues">
+  </a>
+  <a href="https://github.com/yesetoda/BlogMate/commits/master" target="_blank">
+    <img src="https://img.shields.io/github/last-commit/yesetoda/BlogMate" alt="Last Commit">
+  </a>
+  <a href="https://github.com/yesetoda/BlogMate/stargazers" target="_blank">
+    <img src="https://img.shields.io/github/stars/yesetoda/BlogMate?style=social" alt="GitHub Stars">
+  </a>
+  <a href="https://github.com/yesetoda/BlogMate/network/members" target="_blank">
+    <img src="https://img.shields.io/github/forks/yesetoda/BlogMate?style=social" alt="GitHub Forks">
+  </a>
+  <br><br>
+</p>
+  <img src="blogmate2.png" alt="BlogMate" >
 
----
+ **BlogMate** is a powerful, feature-rich blogging API built in Go with the Gin framework and backed by MongoDB. It supports secure user management, complete CRUD operations for blog posts, interactive comments and replies, and AI-powered content recommendations via Gemini AI. Designed by the [Yesetoda](https://github.com/yesetoda) team, BlogMate is engineered for scalability and seamless integration into your development and deployment pipelines.
+
 
 ## Table of Contents
 
@@ -19,21 +41,20 @@ BlogMate is maintained by the [Yesetoda](https://github.com/yesetoda) team and i
 - [License](#license)
 - [Contact](#contact)
 
----
 
 ## Features
 
 - **User Management:**  
-  Secure registration, login, account verification, token refresh, and role-based authorization using JWT.
+  Secure registration, login, account verification, token refresh, and role-based authorization (JWT).
 
 - **Blog Management:**  
-  Create, update, delete, and retrieve blog posts with complete CRUD support, including pagination and filtering.
+  Full CRUD support for blog posts along with pagination and filtering.
 
 - **Interactive Comments & Replies:**  
-  Post comments and replies on blog posts with capabilities for likes, dislikes, and views.
+  Easily post comments and threaded replies with like, dislike, and view functionalities.
 
 - **AI-Powered Recommendations:**  
-  Leverage Gemini AI to generate content suggestions including:
+  Integrates Gemini AI to boost your content:
   - **Blog Recommendations:**  
     ```go
     RecommendBlogs(Data) ([]domain.BlogRecommendation, error)
@@ -64,59 +85,68 @@ BlogMate is maintained by the [Yesetoda](https://github.com/yesetoda) team and i
     ```
 
 - **Email Support:**  
-  BlogMate supports emailing capabilities via Google App credentials for sending verification emails and other notifications.
+  Uses Google App credentials to send verification emails and notifications.
 
 - **Validation & Rule Enforcement:**  
-  With integrated validation, BlogMate ensures that all blog content adheres to defined rules before it is published.
+  Automatically ensures your blog content complies with predefined standards.
 
 - **Swagger Documentation:**  
-  Comprehensive API documentation using Swaggo is built-in. Easily explore and test endpoints with the interactive Swagger UI.
+  Comprehensive API docs generated via Swaggo are available for interactive testing.
 
----
 
 ## Architecture & Tech Stack
 
-- **Language:** Go (Golang)
-- **Web Framework:** Gin
-- **Database:** MongoDB
-- **Documentation:** Swagger (using [Swaggo](https://github.com/swaggo/swag))
-- **AI Integration:** Gemini AI for content recommendation (via configurable API keys and models)
-- **Email Integration:** Google App credentials for email notifications
-- **Configuration:** Custom configuration via a YAML file (no reliance on .env)
+- **Language:** [Go (Golang)](https://golang.org/)
+- **Framework:** [Gin](https://github.com/gin-gonic/gin)
+- **Database:** [MongoDB](https://www.mongodb.com/)
+- **API Documentation:** [Swagger (Swaggo)](https://github.com/swaggo/swag)
+- **AI Integration:** Gemini AI for smart content recommendations
+- **Email Integration:** Google App credentials
+- **Configuration:** YAML-based configuration (with environment variable overrides)
 
----
+
 
 ## Installation & Setup
 
-1. **Clone the Repository:**
+### Prerequisites
 
-   ```bash
-   git clone https://github.com/yesetoda/BlogMate.git
-   cd BlogMate
-   ```
+- [Go](https://golang.org/dl/) (version 1.24+)
+- [MongoDB](https://www.mongodb.com/)
+- Gemini AI account & API key
+- Google App credentials for email support
 
-2. **Install Dependencies:**
+### Clone the Repository
 
-   Ensure you have [Go modules](https://github.com/golang/go/wiki/Modules) enabled:
+```bash
+git clone https://github.com/yesetoda/BlogMate.git
+cd BlogMate
+```
 
-   ```bash
-   go mod download
-   ```
+### Install Dependencies
 
-3. **Build the Application:**
+Enable [Go Modules](https://github.com/golang/go/wiki/Modules) and download dependencies:
 
-   Build the project to verify that everything is set up properly:
+```bash
+go mod download
+```
 
-   ```bash
-   cd delivery
-   go build -o blogmate
-   ```
+### Build the Application
+
+Since the entry point is in `delivery/main.go`:
+
+```bash
+cd delivery
+go build -o blogmate
+```
 
 ---
 
 ## Configuration
 
-BlogMate uses a YAML configuration file to define all the settings for the application. Create a configuration file (for example, `config.yaml`) with the following structure:
+BlogMate uses a YAML configuration file. Although `config.yaml` is **gitignored**, you can provide your configuration via environment variables on production platforms such as Render.
+
+**Local Development:**
+Create a `config.yaml` in the project root with the following structure:
 
 ```yaml
 database:
@@ -124,96 +154,122 @@ database:
   password: <your-database-password>
   uri: <your-database-uri>
 email:
-  key: <google app key>
-port: <port number>
-jwt: <jwt key>
+  key: <google-app-key>
+port: <port-number>
+jwt: <jwt-key>
 gemini:
   api_key: <your-gemini-key>
   model: <gemini-model-name>
 ```
 
-Using this approach, you can easily manage environment-specific settings without relying on `.env` files.
+**Production Deployment:**
+Use environment variables on Render (for example):
 
----
+- `DATABASE_USERNAME`
+- `DATABASE_PASSWORD`
+- `DATABASE_URI`
+- `EMAIL_KEY`
+- `PORT`
+- `JWT`
+- `GEMINI_API_KEY`
+- `GEMINI_MODEL`
+
+Your configuration loader should merge these values accordingly.
+
 
 ## Running the Application
 
-Once your configuration file is ready and your dependencies are installed, you can run BlogMate with:
+To start the server:
 
-```bash
-cd delivery
-go run main.go
-```
+1. **Local:**
 
-BlogMate will start the server on the port specified in your configuration. You will see log messages confirming the startup and available endpoints.
+   ```bash
+   cd delivery
+   go run main.go
+   ```
 
----
+   The server will listen on the port defined in your configuration file.
+
+2. **On Render:**
+
+   - Set the **Root Directory** to `delivery`.
+   - **Build Command:**
+     ```bash
+     go build -tags netgo -ldflags '-s -w' -o app
+     ```
+   - **Start Command:**
+     ```bash
+     ./app
+     ```
 
 ## API Documentation
 
-BlogMate comes with built-in interactive API documentation using Swagger. To generate the Swagger docs, run:
+BlogMate comes with built-in Swagger documentation. Generate the docs with:
 
 ```bash
 swag init --dir . --parseDependency
 ```
 
-After generation, start the server and navigate to:
+Then navigate to:
 
 ```
 http://localhost:<port>/docs/index.html
 ```
 
-This interface lets you interact with all API endpoints, view detailed information on request/response models, and even authorize endpoints using JWT Bearer tokens.
+This interactive interface allows you to test endpoints and review API contracts.
 
----
 
 ## AI Model & Validation
 
-The AI model interface provides content recommendations and validation functions:
+The core AI interface includes methods for content suggestion and validation:
 
 ```go
 type AIModel interface {
-	RecommendBlogs(Data) ([]domain.BlogRecommendation, error)
-	RecommendTitle(content string, tags []string) (string, error)
-	RecommendContent(title string, tags []string) (string, error)
-	RecommendTags(title string, content string) ([]string, error)
-	Summarize(Data) (string, error)
-	Validate(Data) error
-	Chat(prompt string) (string, error)
+    RecommendBlogs(Data) ([]domain.BlogRecommendation, error)
+    RecommendTitle(content string, tags []string) (string, error)
+    RecommendContent(title string, tags []string) (string, error)
+    RecommendTags(title string, content string) ([]string, error)
+    Summarize(Data) (string, error)
+    Validate(Data) error
+    Chat(prompt string) (string, error)
 }
 ```
 
-- **Recommendations:** Generate suggestions for blog titles, content, tags, and complete blog recommendations.
-- **Validation:** Check that the blog content adheres to defined rules.
-- **Chat:** A conversational interface to interact with the AI.
+- **Recommendations:** Improve your blog posts with tailored AI suggestions.
+- **Validation:** Ensure content compliance with your defined rules.
+- **Chat:** Interact with an AI for brainstorming and support.
 
-To integrate and configure Gemini AI, ensure your configuration file has the correct `gemini.api_key` and `gemini.model` values. The AI service is initialized when adding the AI routes, and errors will be logged if the API key is missing or invalid.
+Configure your Gemini AI integration by supplying the appropriate API key and model name in your configuration.
 
----
+
 
 ## Contributing
 
-Contributions to BlogMate are always welcome. If you’d like to contribute:
+Contributions are welcome! To contribute:
 
-1. Fork the repository on GitHub.
-2. Create a new branch with your feature or bug fix.
-3. Submit a pull request with a detailed description of your changes.
+1. **Fork the Repository.**
+2. **Create a Feature Branch:**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Commit Your Changes.**
+4. **Submit a Pull Request:**
+   Provide a detailed description of your changes and the problem they solve.
 
-Make sure to follow the repository’s coding standards and include tests where appropriate.
-
----
+Please follow the project’s coding standards and include tests where necessary.
 
 ## License
 
 BlogMate is open-source software.
 
----
-
 ## Contact
 
-For questions, support, or feedback, please contact the Yesetoda team at:  
-**Email:** yeneinehseiba@gmail.com
+For inquiries or support, please contact the [Yesetoda team](mailto:yeneinehseiba@gmail.com).  
+Explore more details on our [GitHub repository](https://github.com/yesetoda/BlogMate) and try the live API:
 
-visit our [GitHub repository](https://github.com/yesetoda/BlogMate) for more details.
-try our Api [BLog Mate](https://blogmate-1amy.onrender.com)
-Swagger Doc [Api Doc](https://blogmate-1amy.onrender.com/doc/index.html)
+- **Website:** [Blog-Mate Api](https://blogmate-1amy.onrender.com)
+- **Swagger Documentation:** [Blog-Mate Api Docs](https://blogmate-1amy.onrender.com/docs/index.html)
+
+
+
+Enjoy using **BlogMate** – your intelligent solution for modern blogging!
